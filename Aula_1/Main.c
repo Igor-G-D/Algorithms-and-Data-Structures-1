@@ -2,97 +2,106 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX 2048;
+int IsValid(char * s);
 
-int isValid(char * s);
+/*
+====================
+Main
 
+Reads from input.txt file, separates each line into an appropriately sized string, and runs it through the IsValid function, printing into the console the result
+====================
+*/
 
-int main(){
+int main( ) {
 
-    char *string;
     FILE *file;
+    char *string;
     int breakVar,breakVar2 = 0;
     int counter = 0;
 
-    if ((file = fopen("/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_1/input.txt", "r")) == NULL) {
-		printf("Error on opening file!\n");
-		exit(1);
+    if ( ( file = fopen( "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_1/input.txt", "r" ) ) == NULL ) {
+		printf( "Error on opening file!\n" );
+		exit( 1 );
 	}
-	while(!feof(file)) {
+	while ( !feof( file ) ) {
         counter = 0;
-        char *word = (char*)malloc(sizeof(char));
-        while(!feof(file)) {
-            char currentChar = fgetc(file);
-            if(currentChar == '\n' || currentChar == '\377') {
+        char *word = ( char* )malloc( sizeof( char ) );
+        while ( !feof( file ) ) {
+            char currentChar = fgetc( file );
+            if( currentChar == '\n' || currentChar == '\377' ) {
                 break;
             }
             else {
-                word[counter] = currentChar;
+                word [ counter ] = currentChar;
                 counter++;
-                word = (char*)realloc(word, (1+counter) * sizeof(char));
+                word = ( char* )realloc( word, ( 1 + counter ) * sizeof( char ) );
             }
         }
-        word[counter] = '\0';
-        int result = isValid(word);
-        if(result) {
-            printf("%s e valido\n", word);
+        word [ counter ] = '\0';
+        int result = IsValid( word );
+        if( result ) {
+            printf ( "%s e valido\n", word ) ;
         } else {
-            printf("%s nao e valido\n", word);
+            printf ( "%s nao e valido\n", word ) ;
         }
-        free(word);
+        free( word );
     }
 
-    fclose(file);
+    fclose( file );
 
     return 0;
 }
 
-int isValid(char * s){
+/*
+====================
+IsValid
 
-    int strLength = strlen(s);
-    if(strLength%2 != 0) {
+Receives a variable length string, and returns if the contents, only being composed of "(","[","{",")","]","}" is a valid expression
+====================
+*/
+
+int IsValid( char * s ) {
+
+    int strLength = strlen( s );
+    if ( strLength % 2 != 0 ) {
         return 0;
     }
     char *pile;
-    pile = (char *) malloc((strLength/2)*sizeof(char));
+    pile = ( char * ) malloc( ( strLength / 2 )*sizeof ( char ) );
     int topPile = -1;
-    for(int i=0;i<strLength;i++) {
+    for( int i=0;i<strLength;i++ ) {
 
-       if(s[i] == '(' || s[i] == '[' || s[i] == '{') {
+       if( s[ i ] == '(' || s[ i ] == '[' || s[ i ] == '{' ) {
            topPile++;
-           if(topPile == strLength/2){
+           if( topPile == strLength/2 ){
                return 0;
            } else {
-                pile[topPile] = s[i];
+                pile[ topPile ] = s[ i ];
            } 
-        }
-        else if(topPile == -1) {
+        } else if ( topPile == -1 ) {
             return 0;
-        }
-        else if(s[i] == ')') {
-            if(pile[topPile] != '(') {
+        } else if ( s[ i ] == ')' ) {
+            if ( pile[ topPile ] != '(' ) {
                 return 0;
             }
             topPile--;
-        }
-        else if(s[i] == ']') {
-            if(pile[topPile] != '[') {
+        } else if ( s[ i ] == ']' ) {
+            if ( pile [ topPile ] != '[' ) {
                 return 0;
             }
             topPile--;
-        }
-        else if(s[i] == '}') {
-            if(pile[topPile] != '{') {
+        } else if (s[ i ] == '}') {
+            if( pile [ topPile ] != '{' ) {
                 return 0;
             }
             topPile--;
         }
     }
-    if(topPile != -1) {
-        free(pile);
+    if ( topPile != -1 ) {
+        free ( pile );
         return 0;
     } else {
-        free(pile);
+        free ( pile );
         return 1;
     }
 
