@@ -14,8 +14,8 @@ int main(){
     int breakVar,breakVar2 = 0;
     int counter = 0;
 
-    if ((file = fopen("input.txt", "r")) == NULL) {
-		printf("Error on opening file\n");
+    if ((file = fopen("/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_1/input.txt", "r")) == NULL) {
+		printf("Error on opening file!\n");
 		exit(1);
 	}
 	while(!feof(file)) {
@@ -43,6 +43,8 @@ int main(){
     }
 
     fclose(file);
+
+    return 0;
 }
 
 int isValid(char * s){
@@ -87,8 +89,10 @@ int isValid(char * s){
         }
     }
     if(topPile != -1) {
+        free(pile);
         return 0;
     } else {
+        free(pile);
         return 1;
     }
 
