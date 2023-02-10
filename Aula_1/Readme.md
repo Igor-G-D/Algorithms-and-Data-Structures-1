@@ -12,4 +12,6 @@ contem:
 
 É necessário alterar o caminho descrito no fopen(), já que não funcionava caminho relativo rodando com o Vargrind, depois, compilar e executar o Main.c
 
+Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
+
 Video Link: tbd
