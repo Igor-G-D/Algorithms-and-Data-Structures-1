@@ -1,68 +1,96 @@
-// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-// An input string is valid if:
+#define MAX 2048;
 
-// Open brackets must be closed by the same type of brackets.
-// Open brackets must be closed in the correct order.
-// Every close bracket has a corresponding open bracket of the same type.
+int isValid(char * s);
 
-bool isValid(char * s){
 
-    int bracket_1 = 0;
-    int bracket_2 = 0;
-    int bracket_3 = 0;
-    int previous;
-    int strlength = strlen(s);
-    int order[strlength];
-    int jump = 1;
-    int counter = 0 ;
-    int i;
+int main(){
 
-    for(i=0;i<strlength;i++) {
-        if(s[i] == '(') {
-            bracket_1++;
-            order[counter]=1;
-            counter++;
-        }
-        else if(s[i] == '[') {
-            bracket_2++;
-            order[counter]=2;
-            counter++;
-        }
-        else if(s[i] == '{') {
-            bracket_3++;
-            order[counter]=3;
-            counter++;
-        }
-        else if(s[i] == ')') {
-            bracket_1--;
-            if(order[counter-jump] == 1) {
-                jump++;
-            } else {
-                return 0;
+    char *string;
+    FILE *file;
+    int breakVar,breakVar2 = 0;
+    int counter = 0;
+
+    if ((file = fopen("input.txt", "r")) == NULL) {
+		printf("Error on opening file\n");
+		exit(1);
+	}
+	while(!feof(file)) {
+        counter = 0;
+        char *word = (char*)malloc(sizeof(char));
+        while(!feof(file)) {
+            char currentChar = fgetc(file);
+            if(currentChar == '\n' || currentChar == '\377') {
+                break;
+            }
+            else {
+                word[counter] = currentChar;
+                counter++;
+                word = (char*)realloc(word, (1+counter) * sizeof(char));
             }
         }
-        else if(s[i] == ']') {
-            bracket_2--;
-            if(order[counter-jump] == 2) {
-                jump++;
-            } else {
-                return 0;
-            }
+        word[counter] = '\0';
+        int result = isValid(word);
+        if(result) {
+            printf("%s e valido\n", word);
+        } else {
+            printf("%s nao e valido\n", word);
         }
-        else if(s[i] == '}') {
-            bracket_3--;
-            if(order[counter-jump] == 3) {
-                jump++;
-            } else {
-                return 0;
-            }
-        }
+        free(word);
     }
 
-    if(bracket_1 == 0 && bracket_2 == 0 && bracket_3 == 0) {
-        return 1;
-    } else {
+    fclose(file);
+}
+
+int isValid(char * s){
+
+    int strLength = strlen(s);
+    if(strLength%2 != 0) {
         return 0;
     }
+    char *pile;
+    pile = (char *) malloc((strLength/2)*sizeof(char));
+    int topPile = -1;
+    for(int i=0;i<strLength;i++) {
+
+       if(s[i] == '(' || s[i] == '[' || s[i] == '{') {
+           topPile++;
+           if(topPile == strLength/2){
+               return 0;
+           } else {
+                pile[topPile] = s[i];
+           } 
+        }
+        else if(topPile == -1) {
+            return 0;
+        }
+        else if(s[i] == ')') {
+            if(pile[topPile] != '(') {
+                return 0;
+            }
+            topPile--;
+        }
+        else if(s[i] == ']') {
+            if(pile[topPile] != '[') {
+                return 0;
+            }
+            topPile--;
+        }
+        else if(s[i] == '}') {
+            if(pile[topPile] != '{') {
+                return 0;
+            }
+            topPile--;
+        }
+    }
+    if(topPile != -1) {
+        return 0;
+    } else {
+        return 1;
+    }
+
 }
+
