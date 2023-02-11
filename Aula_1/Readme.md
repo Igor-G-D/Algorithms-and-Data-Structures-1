@@ -14,4 +14,4 @@ contem:
 
 Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
 
-Video Link: tbd
+Video Link: https://drive.google.com/file/d/1JoLcr9243KHea98_Vs3xWCN4Coh9NluP/view?usp=share_link (Disponível para o grupo informática UFPEL)
