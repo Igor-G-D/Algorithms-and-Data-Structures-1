@@ -17,14 +17,13 @@ int main( ) {
     FILE *file;
     char *string;
     int breakVar,breakVar2 = 0;
-    int counter = 0;
 
     if ( ( file = fopen( "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_1/input.txt", "r" ) ) == NULL ) {
 		printf( "Error on opening file!\n" );
 		exit( 1 );
 	}
 	while ( !feof( file ) ) {
-        counter = 0;
+        int counter = 0;
         char *word = ( char* )malloc( sizeof( char ) );
         while ( !feof( file ) ) {
             char currentChar = fgetc( file );
@@ -74,24 +73,29 @@ int IsValid( char * s ) {
        if( s[ i ] == '(' || s[ i ] == '[' || s[ i ] == '{' ) {
            topPile++;
            if( topPile == strLength/2 ){
+                free ( pile );
                return 0;
            } else {
                 pile[ topPile ] = s[ i ];
            } 
         } else if ( topPile == -1 ) {
+            free ( pile );
             return 0;
         } else if ( s[ i ] == ')' ) {
             if ( pile[ topPile ] != '(' ) {
+                free ( pile );
                 return 0;
             }
             topPile--;
         } else if ( s[ i ] == ']' ) {
             if ( pile [ topPile ] != '[' ) {
+                free ( pile );
                 return 0;
             }
             topPile--;
         } else if (s[ i ] == '}') {
             if( pile [ topPile ] != '{' ) {
+                free ( pile );
                 return 0;
             }
             topPile--;
