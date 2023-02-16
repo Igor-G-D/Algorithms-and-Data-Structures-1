@@ -11,4 +11,6 @@ contem:
 
 Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
 
-Video Link: https://drive.google.com/drive/folders/151JzK7jT4HzrUPjaoY2EldJVDHXr4Y4g?usp=share_link (Disponível para o grupo informática UFPEL)
+Video Link: https://drive.google.com/drive/folders/151JzK7jT4HzrUPjaoY2EldJVDHXr4Y4g?usp=share_link (Disponível para o grupo informática UFPEL) 
+
+Obs: O audio foi cortado no começo quando fui falar o meu nome, mas já que tinha o nome na tela quando começa o video pelo Readme.md, não achei que seria problema
