@@ -4,18 +4,16 @@
 
 #define MAX 256
 
-void cria_lista(void);
 void insere(char **baseString,char * newString);
 void Apaga ( char **baseString, char *toBeDeletedString );
 void imprime(char * s);
 int menu(void);
-int livre(void);
 void LerString(char palavra[MAX]);
 
 int main()
 {
 	int escolha;
-    char *list;
+    char *list = NULL;
     char *name = ( char* )malloc( sizeof( char ) * 256);
     
 	for (;;) {
@@ -35,7 +33,11 @@ int main()
 			imprime(list);
 			break;
 		case 4:
+			free(name);
+			free(list);
 			exit(0);
+			break;
+		default:
 			break;
 		}
 	}
@@ -68,17 +70,17 @@ void LerString(char palavra[MAX])
 		palavra[i++] = c;
 		c = getchar();
 	}
-    while (i < MAX) {
-        palavra[i] = '\0';
-        i++;
-    }
+    palavra[i] = '\0';
+
 
 }
+
+
 
 void insere(char **baseString,char * newString)
 {
     int sizeBase;
-    if (*baseString == NULL) {
+	if (*baseString == NULL) {
         sizeBase = 0;
     } else {
         sizeBase = strlen(*baseString);
@@ -86,35 +88,43 @@ void insere(char **baseString,char * newString)
     int sizeNew = strlen(newString);
 
 	if(sizeBase == 0) {
-        *baseString = ( char* )malloc( sizeof( char ) * sizeNew );
+        *baseString = ( char* )malloc( sizeof( char ) * sizeNew + 1);
         strcpy(*baseString, newString);
     } else {
         int counter = 0;
-        *baseString = ( char* )realloc( *baseString, ( ( sizeBase+sizeNew+2 ) * sizeof( char ) ) );
-        //*baseString[sizeBase] = ',';
-        for( int i = sizeBase+1 ; i < ( sizeBase + sizeNew ) ; i++ ) {
-            *baseString[i] = newString[counter];
+
+        (*baseString) = ( char* )realloc( (*baseString), ( (sizeBase+sizeNew + 2) * sizeof( char ) ) );
+        (*baseString)[sizeBase] = ',';
+
+        for( int i = sizeBase+1 ; i < ( sizeBase + sizeNew + 2) ; i++ ) {
+            (*baseString)[i] = newString[counter];
             counter++;
-        }
+		}	
     }
 }
 
 void Apaga ( char **baseString, char *toBeDeletedString )
 {
-    int found = 0;
-    char *tempBase;
-    strcpy(*baseString, tempBase);
+	int found = 0;
+    char *tempBase = (char*)malloc((strlen(*baseString)+1) * sizeof(char));
+    strcpy(tempBase, *baseString);
     free(*baseString);
+	*baseString = NULL;
     char *temp = strtok(tempBase,",");
     while (temp != NULL) {
-        if(temp != toBeDeletedString && found != 1) {
+        if(strcmp(temp, toBeDeletedString) != 0 || found) {
             insere(baseString, temp);
-        }
+        } else {
+			found = 1;
+		}
+		temp = strtok(NULL,",");
     }
+	free(temp);
+	free(tempBase);
 
 }
 
 void imprime(char * s)
 {
-	printf("Name List: %s", s);
+	printf("Name List: %s\n", s);
 }
