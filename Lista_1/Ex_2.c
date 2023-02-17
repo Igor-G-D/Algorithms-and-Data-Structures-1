@@ -148,7 +148,6 @@ void Apaga ( char **baseString, char *toBeDeletedString )
 		}
 		temp = strtok( NULL,"," );
     }
-	free( temp );
 	free( tempBase );
 
 }
