@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1_Valendo",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1_Valendo/Trabalho_Pratico_1",
+            "binaryArgs": []
+        }
+    ]
+}

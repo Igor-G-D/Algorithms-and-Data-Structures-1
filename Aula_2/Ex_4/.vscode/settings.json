@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "stdio.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_2/Ex_4",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Aula_2/Ex_4/Ex_4",
+            "binaryArgs": []
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1/Ex_3",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Trabalho_Pratico_1/Trabalho_Pratico_1",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "stdlib.h": "c"
+    }
+}
