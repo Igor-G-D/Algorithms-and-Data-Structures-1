@@ -45,12 +45,9 @@ NodeStack *pop(NodeStackHead **head) { //pops the top element from the stack, NO
 }
 
 void reset(NodeStackHead **head) { // clears stack
-    NodeStack **lead;
-    for(NodeStack* p = (*head)->next; p != NULL; p = (*lead)) {
-        lead = &(p->next); // stores the address of the next element
+    for(NodeStack *p = pop(head); p != NULL; p = pop(head)) { //iterates over the stack, popping each element until the head points to NULL
         free(p);  // frees the current element
     }
-    (*head)->next = NULL; // makes the head of the stack point to NULL
 }
 
 void listStack(NodeStackHead **head) {
