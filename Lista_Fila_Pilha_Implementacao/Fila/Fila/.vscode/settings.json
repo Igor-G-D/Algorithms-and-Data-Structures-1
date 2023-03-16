@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Lista_Fila_Pilha_Implementacao/Fila/Fila/output",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Lista_Fila_Pilha_Implementacao/Fila/Fila/output/main",
+            "binaryArgs": []
+        }
+    ]
+}

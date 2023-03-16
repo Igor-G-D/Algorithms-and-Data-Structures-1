@@ -26,13 +26,27 @@ void push(NodeQueueHead **head, NodeQueue *newNode) {
     if((*head)->front == NULL) { // if queue is empty, the element added is both the first and last element
         (*head)->front = newNode;
         (*head)->back = newNode;
-        (*head)->quantity++;
     } else {
-        newNode->next = (*head)-> back; // makes the newNode point to the last element of the Queue
-        ((*head)->back)->previous = newNode; //makes the node at the end of the list point back to the element added at the back of the queue (doubly linked list)
-        (*head)->back = newNode; // makes the head point to the newNode, making it the last element in the Queue
-        (*head)->quantity++;
+        for(NodeQueue *p = (*head)->back; p != NULL; p = p->next) {
+            if(newNode->value <= p->value){ //if the value of the node to be added is smaller or equal to the value of the current node, it will be added before the current node
+                newNode->next = p;
+                newNode->previous = p->previous;
+                if(p->previous == NULL) { //if the current node is at the end of the queue, the head needs to point to it as the back of the queue
+                    (*head)->back = newNode;
+                } else {
+                    p->previous->next = newNode;
+                }
+                p->previous = newNode;
+                break;
+            }
+        }
+        if(newNode->next == NULL) { //if it enters this condition, means that the node wasn't added anywhere else, so it will be in the front of the list
+            newNode->previous = (*head)->front;
+            (*head)->front->next = newNode;
+            (*head)->front = newNode;        
+        }
     }
+    (*head)->quantity++;
 }
 
 NodeQueue *pop(NodeQueueHead **head) { //pops the first element from the Queue, NOTE: Does not free the removed element
@@ -61,11 +75,17 @@ void reset(NodeQueueHead **head) { // clears Queue
 }
 
 void listQueue(NodeQueueHead **head) {
+    NodeQueueHead *newHead = createHead(); // new head to insert the read elements
     int totalQuantity = (*head)->quantity;
     printf("There are %d elements in the Queue \n", (*head)->quantity);
     for(int i=0;i<totalQuantity;i++) {
         NodeQueue *poppedElement = pop(head);
         printf("- Value: %d\n", poppedElement->value);
-        push(head, poppedElement); //insert the popped elements into the new queue
+        push(&(newHead), poppedElement); //insert the popped elements into the new temp head
     }
+    for(int i=0;i<totalQuantity;i++) {
+        NodeQueue *poppedElement = pop(&newHead);
+        push(head, poppedElement); //insert the popped elements back into head
+    }
+    free(newHead);
 }
