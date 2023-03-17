@@ -7,7 +7,9 @@ Dado uma lista encadeada, retornar se ela é um palíndromo ou não.
 https://leetcode.com/problems/palindrome-linked-list/
 
 contém:
-    - main.c: todas as funções para rodar o código, e alguns casos de teste. Implementação de Stack, comentado o máximo possível para explicar o que aconteçe no código.
+    - src/main.c: todas as funções para rodar o código, e alguns casos de teste. Implementação de Stack, comentado o máximo possível para explicar o que aconteçe no código. (código que foi alterado para consertar os casos de teste e leaks de memória)
+    
+    - ParaEntregar/main.c: todas as funções para rodar o código, e alguns casos de teste. Implementação de Stack, comentado o máximo possível para explicar o que aconteçe no código. (código que foi entregue)
 
 Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
 
