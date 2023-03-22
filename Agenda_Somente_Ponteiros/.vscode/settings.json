@@ -1,0 +1,15 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Agenda_Somente_Ponteiros/output",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_1/Agenda_Somente_Ponteiros/output/main",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "array": "c",
+        "deque": "c",
+        "vector": "c",
+        "string_view": "c"
+    }
+}

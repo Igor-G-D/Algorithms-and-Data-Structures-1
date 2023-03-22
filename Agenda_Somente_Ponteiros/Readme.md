@@ -10,3 +10,5 @@
 Seguir as orientações elaborados pelo monitor para código!
 Entregar link de um vídeo explicando o código e mostrando alguns testes e ao final o resultado do DrMemory.
 Vou perguntar no 1:1 sobre a sua implementação. Posso pedir para fazer alguma modificação no código na nossa conversa!
+
+Node: char[11], int, char[14], void*prev, void*next

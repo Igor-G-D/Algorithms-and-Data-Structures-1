@@ -1,0 +1,14 @@
+void *createHead(void);
+void *createNode(void);
+void push(void *head, void *newNode);
+void *pop(void *head);
+void reset(void *head);
+void listQueue(void *head);
+int * quantity(void * head);
+void ** front(void * head);
+void ** back(void * head);
+void ** next(void * node);
+void ** prev(void * node);
+char * name(void * node);
+int * age(void * node);
+char * tel(void * node);
