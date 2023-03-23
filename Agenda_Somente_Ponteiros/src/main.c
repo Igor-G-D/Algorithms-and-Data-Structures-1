@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue_library.h"
+#include "library.h"
 
 int main( ) {
 	void * pBuffer = malloc((sizeof(int))+(sizeof(char)*11));
