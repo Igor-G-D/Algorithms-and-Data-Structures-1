@@ -1,3 +1,7 @@
+Igor Gomes Dutra
+
+Algoritimos e Estrutura de Dados 1, Turma M1
+
 • Continuar a sua implementação da agenda (exercício 3) semana 1 dentro dos mesmo parâmetros, mas incluir o seguinte.
     - Nenhuma variável pode ser declarada em todo o programa, somente ponteiros. Todos os dados do programa devem ser guardados dentro do pBuffer.
         - Nem mesmo como parâmetro de função. Só ponteiros que apontam para dentro do pBuffer.
@@ -7,11 +11,19 @@
     - Implementar a base de dados da agenda usando lista duplamente ligada
         - Somente essa base de dados pode ficar fora do buffer principal, ou seja, pode usar um malloc para cada nodo.
 
-Seguir as orientações elaborados pelo monitor para código!
-Entregar link de um vídeo explicando o código e mostrando alguns testes e ao final o resultado do DrMemory.
-Vou perguntar no 1:1 sobre a sua implementação. Posso pedir para fazer alguma modificação no código na nossa conversa!
 
-Node: char[11], char[14], int, void*prev, void*next
+contém:
+ -> src/main.c: switch dentro de um loop para rodar o código até a opção de sair ser selecionada
+ -> src/library.c: todas as funções para rodar o código, comentado o máximo possível para explicar o que aconteçe no código.
 
-pBuffer: choice, nameToSearch
-           int   char[11]
+Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
+
+Video Link: TBD
+
+Organização dos pointeiros void:
+
+Head: int quantidade, void *front, void *back
+
+Node: char[11] nome, char[14] telefone, int idade, void *prev, void *next
+
+pBuffer: int choice, char [11] nameToSearch
