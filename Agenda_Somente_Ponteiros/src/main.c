@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "library.h"
 #include "queue_library.h"
 
 int main( ) {

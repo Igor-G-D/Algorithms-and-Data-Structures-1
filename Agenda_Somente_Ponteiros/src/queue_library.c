@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "library.h"
 #include "queue_library.h"
 
 void *createHead(void) { // return the address of a new Head that points to NULL on both ends
