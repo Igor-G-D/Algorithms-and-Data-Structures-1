@@ -8,7 +8,7 @@ int main ( ) {
 
 	while ( 1 ) {
 		menu(pBuffer);
-		switch ( ( *choice( pBuffer )) ) {
+		switch ( ( *choice( pBuffer ) ) ) {
 		case 1:
 			push( data, createNode( ) );
 			break;

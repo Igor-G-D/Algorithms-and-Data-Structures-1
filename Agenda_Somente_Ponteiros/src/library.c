@@ -150,19 +150,18 @@ void searchInfo ( void * head, void * pBuffer ) {
     printf ( "Please inform the name to be searched (Max 10 characters) : " );
     scanf ( "%s", nameSearch( pBuffer ) ); //char toBeRemoved [11]
     void * p = *back( head );
+    while ( p != NULL ) {
+        if ( strcmp( ( nameSearch( pBuffer ) ), ( name( p ) ) ) == 0 ) {
+            printf( "=========================================\n" );
+            printf( "- - Name: %s\n", name( p ) );
+            printf( "- - Age: %d\n", *age( p ) );
+            printf( "- - Phone: %s\n", tel( p ) );                
+        }
+        p = ( *next( p ) );
+    }
     if ( p == NULL ) {
         printf( "=========================================\n" );
         printf( "\nName not in the database\n\n" );
-    } else {
-        while ( p != NULL ) {
-            if ( strcmp( ( nameSearch( pBuffer ) ), ( name( p ) ) ) == 0 ) {
-                printf( "=========================================\n" );
-                printf( "- - Name: %s\n", name( p ) );
-                printf( "- - Age: %d\n", *age( p ) );
-                printf( "- - Phone: %s\n", tel( p ) );                
-            }
-            p = ( *next( p ) );
-        }
     }
 }
 
