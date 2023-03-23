@@ -18,7 +18,11 @@ contém:
 
 Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
 
-Video Link: TBD
+Video Link: https://drive.google.com/file/d/1FrsmTC6CRspoOzE3pbccMuPuSMFAy64C/view?usp=share_link (Acessível ao grupo Informática UFPEL)
+
+Timestamps:
+    - Explicando o código: 00:00 até 06:19
+    - Rodando no Valgrind: 6:19 até 10:03
 
 Organização dos pointeiros void:
 
