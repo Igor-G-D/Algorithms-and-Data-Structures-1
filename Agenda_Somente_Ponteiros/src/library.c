@@ -226,7 +226,7 @@ front()
     Receives a pointer to the head, and returns a pointer to the front element of the doubly linked list
 ====================
 */
-void ** front ( void * head) {
+void ** front ( void * head ) {
     return ( ( void** )( ( head ) + ( sizeof( int ) ) ) ); 
 }
 
