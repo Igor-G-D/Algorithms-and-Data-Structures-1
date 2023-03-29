@@ -53,19 +53,25 @@ void removeTreeNode ( TreeNode **p, int value ) {
             (*p) = (*p)->right;
             free(temp);
         } else if((*p)->left && (*p)->right) { // means that it has both a left and right element
-            if(height((*p)->left) > height((*p)->right)) { // means the height of the left element is higher than the height of the right element
-                TreeNode *temp = (*p);
-                (*p) = deleteHighest((&((*p)->left))); // changes the value of the element to be removed to the value of the highest element on its left
-                (*p)->left = temp->left;
-                (*p)->right = (*p)->right;
-                free(temp);
-            } else { // means the height of the right element is higher or equal to the height of the right element
-                TreeNode *temp = (*p);
-                (*p) = deleteLowest((&((*p)->right))); // changes the value of the element to be removed to the value of the lowest element on its right
-                (*p)->left = temp->left;
-                (*p)->right = (*p)->right;
-                free(temp);
-            }
+            
+            // if(height((*p)->left) > height((*p)->right)) { // means the height of the left element is higher than the height of the right element
+            //     TreeNode *temp = (*p);
+            //     (*p) = deleteHighest((&((*p)->left))); // changes the value of the element to be removed to the value of the highest element on its left
+            //     (*p)->left = temp->left;
+            //     (*p)->right = (*p)->right;
+            //     free(temp);
+            // } else { // means the height of the right element is higher or equal to the height of the right element
+            //     TreeNode *temp = (*p);
+            //     (*p) = deleteLowest((&((*p)->right))); // changes the value of the element to be removed to the value of the lowest element on its right
+            //     (*p)->left = temp->left;
+            //     (*p)->right = (*p)->right;
+            //     free(temp);
+            // }
+
+            TreeNode *temp = (*p);
+            (*p) = deleteHighest((&((*p)->left))); // changes the value of the element to be removed to the value of the highest element on its left
+            (*p)->left = temp->left;
+            (*p)->right = (*p)->right;
         } 
     }
 }
@@ -109,3 +115,27 @@ TreeNode * deleteLowest(TreeNode ** p) { // looks for the element with the lowes
         return temp;
     }
 } 
+
+void rotationLL ( TreeNode ** p) {
+    TreeNode *temp = (*p)->left;
+    (*p)->left = (*p)->left->right;
+    temp->right = (*p);
+    (*p) = temp;
+}
+
+void rotationRR ( TreeNode ** p) {
+    TreeNode *temp = (*p)->right;
+    (*p)->right = (*p)->right->left;
+    temp->left = (*p);
+    (*p) = temp;
+}
+
+void rotationRL ( TreeNode **p ) {
+    rotationLL(&((*p)->left));
+    rotationRR(p);
+}
+
+void rotationLR ( TreeNode **p ) {
+    rotationRR(&((*p)->right));
+    rotationLL(p);
+}
