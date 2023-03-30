@@ -16,3 +16,8 @@ int height( TreeNode *p );
 int balancingFactor( TreeNode *p );
 TreeNode * deleteHighest(TreeNode ** p);
 TreeNode * deleteLowest(TreeNode ** p);
+void rotationLL ( TreeNode ** p);
+void rotationRR ( TreeNode ** p);
+void rotationRL ( TreeNode ** p); 
+void rotationLR ( TreeNode ** p); 
+void balancingAVL ( TreeNode **p );

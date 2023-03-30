@@ -20,17 +20,15 @@ TreeNode * createTreeNode (int value) {
 void insertTreeNode ( TreeNode **p, TreeNode *newNode ) {
     if( (*p) == NULL ) {
         (*p) = newNode;
-        return;
     } else if ( (*p)->value > newNode->value) {
         insertTreeNode( (&((*p)->left)), newNode );
-        return;
     }  else if ( (*p)->value < newNode->value ) {
         insertTreeNode( (&((*p)->right)), newNode );
-        return;
     } else { // means that the values are equal
         printf("Value already in the tree! (%d)\n", newNode->value);
-        return;
     }
+
+    balancingAVL(p);
 }
 
 void removeTreeNode ( TreeNode **p, int value ) {
@@ -74,6 +72,7 @@ void removeTreeNode ( TreeNode **p, int value ) {
             (*p)->right = (*p)->right;
         } 
     }
+    balancingAVL(p);
 }
 
 int height( TreeNode *p ) {
@@ -131,11 +130,28 @@ void rotationRR ( TreeNode ** p) {
 }
 
 void rotationRL ( TreeNode **p ) {
-    rotationLL(&((*p)->left));
+    rotationLL(&((*p)->right));
     rotationRR(p);
 }
 
 void rotationLR ( TreeNode **p ) {
-    rotationRR(&((*p)->right));
+    rotationRR(&((*p)->left));
     rotationLL(p);
+}
+
+void balancingAVL ( TreeNode **p ) {
+    int bf = balancingFactor(*p);
+    if (bf > 1) {
+        if (balancingFactor((*p)->left) > 0) { // Left Left rotation
+            rotationLL(p);
+        } else { // Right Left rotation
+            rotationLR(p);
+        }
+    } else if (bf < -1) {
+        if (balancingFactor((*p)->right) < 0) { // Right Right rotation
+            rotationRR(p);
+        } else { // Left Right rotation
+            rotationRL(p);
+        }
+    }
 }
