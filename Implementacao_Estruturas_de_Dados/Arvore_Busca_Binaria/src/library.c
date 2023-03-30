@@ -67,9 +67,9 @@ void removeTreeNode ( TreeNode **p, int value ) {
             // }
 
             TreeNode *temp = (*p);
-            (*p) = deleteHighest((&((*p)->left))); // changes the value of the element to be removed to the value of the highest element on its left
+            (*p) = deleteLowest(&((*p))); // changes the value of the element to be removed to the value of the highest element on its left
             (*p)->left = temp->left;
-            (*p)->right = (*p)->right;
+            (*p)->right = temp->right;
         } 
     }
     balancingAVL(p);

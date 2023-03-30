@@ -6,13 +6,15 @@ int main(  )
 {
     TreeHead *head = createTreeHead();
 
-    int teste[11] = {5,4,7,10,43,5,11,8,9,12,-3};
+    // int teste[12] = {5,4,7,10,43,5,11,8,9,12,-3, 6};
 
-    for(int i=0;i<11;i++) {
-        insertTreeNode(&(head->root), createTreeNode(teste[i]));
+    srand(50);
+
+    for(int i=0;i<20;i++) {
+        insertTreeNode(&(head->root), createTreeNode(rand()%100));
     }
 
-    removeTreeNode(&(head->root), -3);
-    removeTreeNode(&(head->root), 7);
-    removeTreeNode(&(head->root), 10);
+    // removeTreeNode(&(head->root), -3);
+    // removeTreeNode(&(head->root), 7);
+    // removeTreeNode(&(head->root), 10);
 }
