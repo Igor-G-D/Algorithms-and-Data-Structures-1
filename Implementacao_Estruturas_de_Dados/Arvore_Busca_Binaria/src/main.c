@@ -37,4 +37,7 @@ int main(  )
     printPreOrder(head->root);
     printf("\n");
 
+    searchTree(head->root, 45);
+    searchTree(head->root, 82);
+
 }

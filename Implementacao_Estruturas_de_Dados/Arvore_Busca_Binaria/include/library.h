@@ -24,3 +24,4 @@ void balancingAVL ( TreeNode **p );
 void printInOrder ( TreeNode *p );
 void printPreOrder ( TreeNode *p );
 void printPostOrder ( TreeNode *p );
+void searchTree( TreeNode * p, int value );

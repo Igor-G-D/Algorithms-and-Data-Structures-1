@@ -199,3 +199,16 @@ void printPreOrder ( TreeNode *p ) {
         printPreOrder( p->right ); 
     }
 }
+
+void searchTree( TreeNode * p, int value ) {
+    if (p == NULL) {
+        printf("Searched value not found! (%d)\n", value);
+        return;
+    } else if (value > p->value) { // if value is bigger than the current node's value, search on the right subtree
+        searchTree(p->right, value);
+    } else if (value < p->value) {// if value is smaller than the current node's value, search on the right subtree
+        searchTree(p->left, value);
+    } else {
+        printf("Searched value was found inside the tree! (%d)\n", value); // if both of the previous conditions are false, and the element isn't NULL, means that the values are equal
+    }
+}
