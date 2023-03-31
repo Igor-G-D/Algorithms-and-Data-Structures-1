@@ -32,7 +32,10 @@ void insertTreeNode ( TreeNode **p, TreeNode *newNode ) {
 }
 
 void removeTreeNode ( TreeNode **p, int value ) {
-    if ( (*p)->value > value) {
+    if( (*p) == NULL) { // if null, means it wasn't found
+        printf("Value Not found! (%d)\n", value);
+        return;
+    } else if ( (*p)->value > value) {
         removeTreeNode((&((*p)->left)), value );
     }  else if ( (*p)->value < value ) {
         removeTreeNode((&((*p)->right)), value );
@@ -67,7 +70,7 @@ void removeTreeNode ( TreeNode **p, int value ) {
             // }
 
             TreeNode *temp = (*p);
-            (*p) = deleteLowest(&((*p))); // changes the value of the element to be removed to the value of the highest element on its left
+            (*p) = deleteLowest(&((*p)->right)); // changes the value of the element to be removed to the value of the highest element on its left
             (*p)->left = temp->left;
             (*p)->right = temp->right;
         } 
@@ -96,21 +99,23 @@ int balancingFactor( TreeNode *p ) {
     return ((height(p->left)) - (height(p->right)));
 }
 
-TreeNode * deleteHighest(TreeNode ** p) { // looks for the element with the lowest value, deletes it from the tree and returns its value
-    if((*p)->right != NULL) {
-        deleteHighest((&((*p)->right)));
-    }
-    TreeNode * temp = (*p);
-    p = NULL;
-    return temp;
-} 
+// TreeNode * deleteHighest(TreeNode ** p) { // looks for the element with the lowest value, deletes it from the tree and returns its value
+//     if((*p)->right != NULL) {
+//         deleteHighest((&((*p)->right)));
+//     }
+//     TreeNode * temp = (*p);
+//     p = NULL;
+//     return temp;
+// } 
 
 TreeNode * deleteLowest(TreeNode ** p) { // looks for the element with the lowest value, deletes it from the tree and returns its value
     if((*p)->left != NULL) {
-        return deleteLowest((&((*p)->left)));
+        TreeNode *lowest = deleteLowest((&((*p)->left)));
+        balancingAVL(p); // needs to check since removing an element may cause an imbalance
+        return lowest;
     } else {
         TreeNode * temp = (*p);
-        (*p) = NULL;
+        (*p) = (*p)->right;
         return temp;
     }
 } 
@@ -153,5 +158,44 @@ void balancingAVL ( TreeNode **p ) {
         } else { // Left Right rotation
             rotationRL(p);
         }
+    }
+}
+
+void printInOrder ( TreeNode *p ) {
+
+    if( p == NULL) {
+        return;
+    } else {
+        printInOrder( p->left );
+
+        printf( "[%d]", p->value );
+
+        printInOrder( p->right ); 
+    }
+}
+
+void printPostOrder ( TreeNode *p ) {
+    
+    if( p == NULL) {
+        return;
+    } else {
+        printPostOrder( p->left );
+
+        printPostOrder( p->right ); 
+
+        printf( "[%d]", p->value );
+    }
+}
+
+void printPreOrder ( TreeNode *p ) {
+        
+    if( p == NULL) {
+        return;
+    } else {
+        printf( "[%d]", p->value );
+
+        printPreOrder( p->left );
+
+        printPreOrder( p->right ); 
     }
 }

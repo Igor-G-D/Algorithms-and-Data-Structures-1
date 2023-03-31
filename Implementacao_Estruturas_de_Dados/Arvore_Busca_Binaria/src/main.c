@@ -8,13 +8,33 @@ int main(  )
 
     // int teste[12] = {5,4,7,10,43,5,11,8,9,12,-3, 6};
 
-    srand(50);
-
-    for(int i=0;i<20;i++) {
+    srand(1);
+    for(int i=0;i<40;i++) {
         insertTreeNode(&(head->root), createTreeNode(rand()%100));
     }
+    // printf("Pre: ");
+    // printPreOrder(head->root);
+    // printf("\n");
+    printf("Pre: ");
+    printPreOrder(head->root);
+    printf("\n");
 
-    // removeTreeNode(&(head->root), -3);
-    // removeTreeNode(&(head->root), 7);
-    // removeTreeNode(&(head->root), 10);
+    removeTreeNode(&(head->root), 83);
+    
+    printf("Pre: ");
+    printPreOrder(head->root);
+    printf("\n");
+
+    removeTreeNode(&(head->root), 45);
+
+    printf("Pre: ");
+    printPreOrder(head->root);
+    printf("\n");
+
+    removeTreeNode(&(head->root), 2);
+
+    printf("Pre: ");
+    printPreOrder(head->root);
+    printf("\n");
+
 }

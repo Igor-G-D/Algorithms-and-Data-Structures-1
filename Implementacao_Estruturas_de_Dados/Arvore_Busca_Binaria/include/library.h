@@ -21,3 +21,6 @@ void rotationRR ( TreeNode ** p);
 void rotationRL ( TreeNode ** p); 
 void rotationLR ( TreeNode ** p); 
 void balancingAVL ( TreeNode **p );
+void printInOrder ( TreeNode *p );
+void printPreOrder ( TreeNode *p );
+void printPostOrder ( TreeNode *p );
