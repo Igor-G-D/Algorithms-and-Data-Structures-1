@@ -11,6 +11,7 @@ contém:
 
 Regras de Código: https://fabiensanglard.net/fd_proxy/doom3/CodeStyleConventions.pdf
 
-Video Link: TBD (Acessível para membros do grupo Informática UFPEL)
+Video Link: https://drive.google.com/file/d/1I1-Ih-TpoUkMDtLf1eb0AdbN5bVTrpEa/view?usp=share_link (Acessível para membros do grupo Informática UFPEL)
 
+Obs: Eu expliquei meio mal na hora, mas para cada nodo, calcular a soma das alturas de seus filhos e somar elas é a mesma coisa que achar o maior caminho que passa por este nodo. E para achar o maior caminho da arvore, deve-se calcular isso para todos os nodos, e retornar o maior deles
 
